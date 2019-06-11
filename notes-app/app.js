@@ -1,5 +1,5 @@
-const utils = require('./utils.js');
+const notes = require('./notes');
 
-const sum = utils.add(4, -2);
+const note = notes();
 
-console.log(sum);
+console.log(note);
