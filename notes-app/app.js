@@ -1,3 +1,5 @@
-const name = require('./utils.js');
+const utils = require('./utils.js');
 
-console.log(name);
+const sum = utils.add(4, -2);
+
+console.log(sum);
