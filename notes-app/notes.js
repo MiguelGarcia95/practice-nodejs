@@ -14,14 +14,14 @@ const createNote = (title, body) => {
   saveNotes(notes);
 }
 
-const saveNotes = notes => {
+const saveNotes = () => {
   const dataJSON = JSON.stringify(notes);
-  fs.writeFileSync(`${notes[0].title}.json`, dataJSON);
+  fs.writeFileSync('notes.json', dataJSON);
 }
 
-const loadNotes = (title) => {
+const loadNotes = () => {
   try {
-    const dataBuffer = fs.readFileSync(`${title}.json`);
+    const dataBuffer = fs.readFileSync('notes.json');
     const dataJSON = dataBuffer.toString();
     return JSON.parse(dataJSON);
   } catch(e) {
