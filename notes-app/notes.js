@@ -5,8 +5,13 @@ const getNotes = () => {
   return 'Your notes...';
 }
 
+const listNotes = () => {
+  const notes = loadNotes();
+  console.log(notes);
+}
+
 const createNote = (title, body) => {
-  const notes = loadNotes(title);
+  const notes = loadNotes();
   const duplicateNotes = notes.filter(note => {
     return note.title === title;
   })
@@ -45,11 +50,11 @@ const removeNote = title => {
   });
 
   if (notes.length === filteredNotes.length) {
-    console.log(chalk.bgRed('No Not Found!'));
+    console.log(chalk.bgRed('No Note Found!'));
   } else {
     console.log(chalk.bgGreen('Note Removed!'));
     saveNotes(filteredNotes);
   }
 }
 
-module.exports = {getNotes, createNote, removeNote};
+module.exports = {getNotes, createNote, removeNote, listNotes};
