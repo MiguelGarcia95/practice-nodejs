@@ -5,4 +5,4 @@ const note = notes();
 
 console.log(note);
 
-console.log(chalk.green('Success!'));
+console.log(chalk.bgRed('Error!'));
