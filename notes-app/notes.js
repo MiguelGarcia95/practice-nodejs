@@ -7,7 +7,9 @@ const getNotes = () => {
 
 const listNotes = () => {
   const notes = loadNotes();
-  console.log(notes);
+  notes.forEach(note => {
+    console.log(note.title);
+  });
 }
 
 const createNote = (title, body) => {
