@@ -6,15 +6,27 @@ const getNotes = () => {
 
 const createNote = (title, body) => {
   const notes = loadNotes(title);
-  notes.push({
-    title: title,
-    body: body,
-  });
 
-  saveNotes(notes);
+  const duplicateNotes = notes.filter(note => {
+    return note.title === title;
+  })
+
+  if (duplicateNotes.length === 0) {
+    notes.push({
+      title: title,
+      body: body,
+    });
+    saveNotes(notes);
+    console.log("New note added");
+  } else {
+    console.log("Note already exists.");
+  }
+
+
+
 }
 
-const saveNotes = () => {
+const saveNotes = notes => {
   const dataJSON = JSON.stringify(notes);
   fs.writeFileSync('notes.json', dataJSON);
 }
