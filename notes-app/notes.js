@@ -5,7 +5,28 @@ const getNotes = () => {
 }
 
 const createNote = (title, body) => {
-  fs.writeFileSync(`${title}.json`, body);
+  const notes = loadNotes(title);
+  notes.push({
+    title: title,
+    body: body,
+  });
+
+  saveNotes(notes);
+}
+
+const saveNotes = notes => {
+  const dataJSON = JSON.stringify(notes);
+  fs.writeFileSync(`${notes[0].title}.json`, dataJSON);
+}
+
+const loadNotes = (title) => {
+  try {
+    const dataBuffer = fs.readFileSync(`${title}.json`);
+    const dataJSON = dataBuffer.toString();
+    return JSON.parse(dataJSON);
+  } catch(e) {
+    return [];
+  }
 }
 
 const removeNote = title => {
