@@ -1,10 +1,15 @@
+const fs = require('fs');
+
 const getNotes = () => {
   return 'Your notes...';
 }
 
 const createNote = (title, body) => {
-    console.log('Title: ' + title);
-    console.log('Body: ' + body);
+  fs.writeFileSync(`${title}.json`, body);
 }
 
-module.exports = {getNotes, createNote};
+const removeNote = title => {
+  fs.unlinkSync(`${title}.json`);
+}
+
+module.exports = {getNotes, createNote, removeNote};
