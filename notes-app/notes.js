@@ -42,7 +42,16 @@ const loadNotes = () => {
 }
 
 const removeNote = title => {
-  fs.unlinkSync(`${title}.json`);
+  const notes = loadNotes();
+  const filteredNotes = notes.reduce((filteredNotes, note) => {
+    if (note.title !== title) {
+      filteredNotes.push(note);
+    }
+    return filteredNotes;
+  }, []);
+  console.log(filteredNotes);
+  saveNotes(filteredNotes);
+  // fs.unlinkSync(`${title}.json`);
 }
 
 module.exports = {getNotes, createNote, removeNote};
