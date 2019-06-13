@@ -46,6 +46,14 @@ app.get('/weather', (req, res) => {
   });
 });
 
+app.get('/help/*', (req, res) => {
+  res.render('404', {
+    title: '404',
+    name: 'Miguel Me',
+    errorMessage: 'Help Page Not Found!'
+  })
+})
+
 app.get('*', (req, res) => {
   res.render('404', {
     title: '404',
