@@ -13,6 +13,13 @@ app.get('', (req, res) => {
   });
 })
 
+app.get('/about', (req, res) => {
+  res.render('about', {
+    title: 'About',
+    name: 'Miguel Me',
+  });
+})
+
 app.get('/weather', (req, res) => {
   res.send({
     forecast: 'Weather Data here',
