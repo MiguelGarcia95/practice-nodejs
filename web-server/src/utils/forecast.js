@@ -8,7 +8,6 @@ const forecast = (latitude, longitude, callback) => {
     if (err) {
       callback('Unable to connect to weather service!', undefined);
     } else if (body.error) {
-      console.log(body.error);
       callback('Unable to find location.', undefined);
     } else {
       callback(undefined, `${body.daily.data[0].summary} It\'s currently ${body.currently.temperature} degrees out with a ${body.currently.precipProbability}% chance of rain`);

@@ -42,18 +42,15 @@ app.get('/help', (req, res) => {
 })
 
 app.get('/weather', (req, res) => {
-  // console.log(req.query.address);
   if (!req.query.address) {
-    return res.send({
-      error: 'Provide an Address'
-    })
+    return res.send({error: 'Provide an Address'})
   }
 
-  geocode(req.query.address, (err, data) => {
+  geocode(req.query.address, (err, {latitude, longitude, location} = {}) => {
     if (err) {
       return res.send({error: err})
     }
-    const {latitude, longitude, location} = data;
+    // const {latitude, longitude, location} = data;
   
       forecast(latitude, longitude, (err, forecastData) => {
         if (err) {
