@@ -1,6 +1,7 @@
 const request = require('request');
 const apiData = require('../api_keys.js');
 const geocode = require('./utils/geocode.js');
+const forecast = require('./utils/forecast.js');
 
 // const url = `${apiData.DSKY_URL}/${apiData.DSKY_KEY}/37.8267,-122.4233?units=us&lang=en`;
 
@@ -23,21 +24,26 @@ const geocode = require('./utils/geocode.js');
 // })
 
 
-const forecast = (location, callback) => {
-  const url = `${apiData.DSKY_URL}/${apiData.DSKY_KEY}/37.8267,-122.4233?units=us&lang=en`;
+// const forecast = (location, callback) => {
+//   const url = `${apiData.DSKY_URL}/${apiData.DSKY_KEY}/${location.longitude},${location.latitude}?units=us&lang=en`;
+//   request({url: url, json: true}, (err, res) => {
+//     if (err) {
+//       callback('Unable to connect to weather service!');
+//     } else if (res.body.error) {
+//       console.log(res.body.error);
+//       callback('Unable to find location.');
+//     } else {
+//       callback(null, {
+//         currently: res.body.currently,
+//         daily: res.body.daily,
+//         location: location.location
+//       });
+//     }
+//   })
+// }
 
-  request({url: url, json: true}, (err, res) => {
-    if (err) {
-      callback('Unable to connect to weather service!');
-    } else if (res.body.error) {
-      callback('Unable to find location.');
-    }
-  })
 
-}
-
-
-forecast({ latitude: 29.7589, longitude: -95.3677, location: 'houston'}, (err, data) => {
-console.log('Error: ', err);
-console.log('Data: ', data);
+forecast({ longitude: 29.7589, latitude: -95.3677, location: 'houston'}, (err, data) => {
+  console.log('Error: ', err);
+  console.log('Data: ', data);
 });
