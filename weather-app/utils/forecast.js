@@ -2,8 +2,8 @@ const request = require('request');
 const apiData = require('../../api_keys.js');
 
 const forecast = (location, callback) => {
-  const url = `${apiData.DSKY_URL}/${apiData.DSKY_KEY}/${location.longitude},${location.latitude}?units=us&lang=en`;
-  
+  const url = `${apiData.DSKY_URL}/${apiData.DSKY_KEY}/${location.latitude},${location.longitude}?units=us&lang=en`;
+
   request({url: url, json: true}, (err, res) => {
     if (err) {
       callback('Unable to connect to weather service!');
