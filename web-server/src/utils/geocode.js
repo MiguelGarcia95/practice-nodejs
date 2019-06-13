@@ -1,5 +1,5 @@
 const request = require('request');
-const apiData = require('../../api_keys.js');
+const apiData = require('../../../api_keys.js');
 
 const geocode = (address, callback) => {
   const url = `${apiData.MAP_URL}/${encodeURIComponent(address)}.json?access_token=${apiData.MAP_KEY}&limit=1`;

@@ -42,14 +42,14 @@ app.get('/help', (req, res) => {
 })
 
 app.get('/weather', (req, res) => {
-  console.log(req.query.address);
+  // console.log(req.query.address);
   if (!req.query.address) {
     return res.send({
       error: 'Provide an Address'
     })
   }
 
-  geocode(address, (err, data) => {
+  geocode(req.query.address, (err, data) => {
     if (err) {
       return res.send({error: err})
     }
@@ -59,14 +59,12 @@ app.get('/weather', (req, res) => {
         if (err) {
           return res.send({error: err})
         }
-        
-        console.log('Location: ', location);
-        console.log('Data: ', forecastData);
-        // return res.send({
-        //   forecast: 'Weather Data here',
-        //   location: 'Location goes here',
-        //   address: req.query.address
-        // });
+
+        return res.send({
+          forecast: forecastData,
+          location: location,
+          address: req.query.address
+        });
       });
   })
 });

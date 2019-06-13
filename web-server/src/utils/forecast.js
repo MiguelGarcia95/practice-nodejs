@@ -1,5 +1,5 @@
 const request = require('request');
-const apiData = require('../../api_keys.js');
+const apiData = require('../../../api_keys.js');
 
 const forecast = (latitude, longitude, callback) => {
   const url = `${apiData.DSKY_URL}/${apiData.DSKY_KEY}/${latitude},${longitude}?units=us&lang=en`;
