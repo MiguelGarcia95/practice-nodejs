@@ -50,7 +50,6 @@ app.get('/weather', (req, res) => {
     if (err) {
       return res.send({error: err})
     }
-    // const {latitude, longitude, location} = data;
   
       forecast(latitude, longitude, (err, forecastData) => {
         if (err) {
