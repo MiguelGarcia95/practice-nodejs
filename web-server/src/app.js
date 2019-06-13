@@ -39,10 +39,17 @@ app.get('/help', (req, res) => {
 })
 
 app.get('/weather', (req, res) => {
+  console.log(req.query.address);
+  if (!req.query.address) {
+    return res.send({
+      error: 'Address not found'
+    })
+  }
+
   res.send({
     forecast: 'Weather Data here',
     location: 'Location goes here',
-    random: 'Weather page, url: /weather',
+    address: req.query.address
   });
 });
 
