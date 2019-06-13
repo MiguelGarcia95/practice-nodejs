@@ -20,6 +20,13 @@ app.get('/about', (req, res) => {
   });
 })
 
+app.get('/help', (req, res) => {
+  res.render('help', {
+    title: 'Help',
+    message: 'Here is a useless help message.'
+  });
+})
+
 app.get('/weather', (req, res) => {
   res.send({
     forecast: 'Weather Data here',
