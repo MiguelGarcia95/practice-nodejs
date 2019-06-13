@@ -1,11 +1,12 @@
 const geocode = require('./utils/geocode.js');
 const forecast = require('./utils/forecast.js');
 
+const address = process.argv[2];
 
-if (!process.argv[2]) {
+if (!address) {
   console.log('Add A Location')
 } else {
-  geocode(process.argv[2], (err, {latitude, longitude, location}) => {
+  geocode(address, (err, {latitude, longitude, location}) => {
     if (err) {
       return console.log('Error: ', err);
     }
