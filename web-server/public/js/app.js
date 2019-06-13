@@ -6,12 +6,14 @@ const message1 = document.getElementById('message-1');
 const message2 = document.getElementById('message-2');
 
 const fetchWeather = address => {
-  if (!address) {
-    return console.log('Location Input Empty');
-  };
-
   message1.textContent = 'Loading...';
   message2.textContent = '';
+
+  if (!address) {
+    message1.textContent = '';
+    message2.textContent = `Error: Location Input is Empty`;
+    return console.log('Location Input Empty');
+  };
 
   fetch(`http://localhost:3000/weather?address=${address}`).then(res => {
     return res.json();
