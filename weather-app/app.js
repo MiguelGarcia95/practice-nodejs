@@ -43,7 +43,7 @@ const forecast = require('./utils/forecast.js');
 // }
 
 
-forecast({ longitude: 29.7589, latitude: -95.3677, location: 'houston'}, (err, data) => {
+forecast({ latitude: 29.7589, longitude: -95.3677, location: 'houston'}, (err, data) => {
   console.log('Error: ', err);
   console.log('Data: ', data);
 });
