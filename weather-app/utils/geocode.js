@@ -4,7 +4,7 @@ const apiData = require('../../api_keys.js');
 const geocode = (address, callback) => {
   const url = `${apiData.MAP_URL}/${encodeURIComponent(address)}.json?access_token=${apiData.MAP_KEY}&limit=1`;
 
-  request({url: url, json: true}, (err, {body}) => {
+  request({url, json: true}, (err, {body}) => {
     const {features} = body;
     if (err) {
       callback('Unable to connect to location services.', null);
