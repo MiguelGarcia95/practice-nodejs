@@ -4,17 +4,17 @@ const apiData = require('../../api_keys.js');
 const forecast = (latitude, longitude, callback) => {
   const url = `${apiData.DSKY_URL}/${apiData.DSKY_KEY}/${latitude},${longitude}?units=us&lang=en`;
 
-  request({url: url, json: true}, (err, res) => {
+  request({url: url, json: true}, (err, {body}) => {
     if (err) {
       callback('Unable to connect to weather service!');
-    } else if (res.body.error) {
-      console.log(res.body.error);
+    } else if (body.error) {
+      console.log(body.error);
       callback('Unable to find location.');
     } else {
-      callback(null, `${res.body.daily.data[0].summary} It\'s currently ${res.body.currently.temperature} degrees out with a ${res.body.currently.precipProbability}% chance of rain`);
+      callback(null, `${body.daily.data[0].summary} It\'s currently ${body.currently.temperature} degrees out with a ${body.currently.precipProbability}% chance of rain`);
       // callback(null, {
-      //   currently: res.body.currently,
-      //   daily: res.body.daily,
+      //   currently: body.currently,
+      //   daily: body.daily,
       //   location: location.location
       // });
     }
