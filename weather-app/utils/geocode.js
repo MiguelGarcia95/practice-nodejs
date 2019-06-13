@@ -5,16 +5,15 @@ const geocode = (address, callback) => {
   const url = `${apiData.MAP_URL}/${encodeURIComponent(address)}.json?access_token=${apiData.MAP_KEY}&limit=1`;
 
   request({url, json: true}, (err, {body}) => {
-    const {features} = body;
     if (err) {
       callback('Unable to connect to location services.', null);
-    } else if (features.length === 0) {
+    } else if (body.features.length === 0) {
       callback('Location not found... Try another search', null);
     } else {
       callback(null, {
-        latitude: features[0].center[1],
-        longitude: features[0].center[0],
-        location: features[0].place_name,
+        latitude: body.features[0].center[1],
+        longitude: body.features[0].center[0],
+        location: body.features[0].place_name,
       });
     }
   })
