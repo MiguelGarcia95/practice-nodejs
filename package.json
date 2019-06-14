@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node web-server/src/app.js",
+    "dev": "nodemon web-server/src/app.js -e js,hbs"
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +16,8 @@
     "request": "^2.88.0",
     "validator": "^10.8.0",
     "yargs": "^13.2.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
   }
 }
